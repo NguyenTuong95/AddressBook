@@ -1,2 +1,2 @@
 # AddressBook
-AddressBook with Qt 
+AddressBook with Qt Creator

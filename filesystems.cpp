@@ -1,6 +1,13 @@
 #include "filesystems.h"
 #include <QDateTime>
 
+#define INDEX_ID                        0
+#define INDEX_NAME                      1
+#define INDEX_PHONE_NUMBER              2
+#define INDEX_EMAIL                     3
+#define INDEX_DATE_OF_BIRTH             4
+#define INDEX_AGE                       5
+
 Filesystems::Filesystems(): FileData(PATH_FILE), contact(new Contact)
 {
     contactModel = ContactModel::GetInstance();
@@ -19,11 +26,11 @@ void Filesystems::ReadDataFromFile(){
                 list = line.simplified().split(',');
                 if(list.size() >= MinSizeList){
                     Contact contact_;
-                    contact_.setContactName(list.at(0));
-                    contact_.setContactPhoneNumber(list.at(1));
-                    contact_.setContactEmail(list.at(2));
-                    contact_.setContactDateOfBirth(QDate::fromString(list.at(3), "yyyyMMdd"));
-                    contact_.CalculateAge();
+                    contact_.setContactName(list.at(INDEX_NAME));
+                    contact_.setContactPhoneNumber(list.at(INDEX_PHONE_NUMBER));
+                    contact_.setContactEmail(list.at(INDEX_EMAIL));
+                    contact_.setContactDateOfBirth(QDate::fromString(list.at(INDEX_DATE_OF_BIRTH), "yyyyMMdd"));
+                    contact_.setContactAge(list.at(INDEX_AGE).toInt());
                     contactModel->appendDataContact(contact_);
                 }
             }

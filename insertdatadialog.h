@@ -8,7 +8,7 @@ namespace Ui {
 class InsertDataDialog;
 }
 
-class InsertDataDialog : public QDialog, protected Contact
+class InsertDataDialog : public QDialog
 {
     Q_OBJECT
 
@@ -31,8 +31,9 @@ public:
         EmptyCode,
         InValidPersonNameCode,
         InValidEmailCode,
-        InValidNumberCode,
-        InValidDateCode
+        InValidPhoneNumberCode,
+        InValidDateCode,
+        InValidAgeCode
     };
     ErrorCode currentErrorCode;
 
@@ -40,9 +41,10 @@ public:
 
     bool IsPhoneNumber(const QString &str);
     bool IsPersonName(const QString &str);
-    bool IsCharacter(const QString &str);
+    bool IsSpecicalCharacter(const QString &str);
     bool IsEmailAddress(const QString &str);
-    bool IsValidDate(const QDate &date);
+    bool IsValidDate(const QString &str);
+    bool IsValidAge(const QString &str);
     void ErrorMessageBox(ErrorCode errorCode);
 };
 

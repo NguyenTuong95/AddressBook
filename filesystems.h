@@ -8,7 +8,7 @@
 
 #include "contact.h"
 
-class Filesystems : protected Contact
+class Filesystems
 {
 private:
 
